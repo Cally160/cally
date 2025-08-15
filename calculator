@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Special Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            animation: backgroundShift 10s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            50% { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
+        }
+
+        .instructions {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: pulse 2s ease-in-out infinite;
+            direction: rtl;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .calculator {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 350px;
+            width: 100%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .display {
+            background: #f8f9fa;
+            border: none;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 20px;
+            text-align: right;
+            width: 100%;
+            margin-bottom: 20px;
+            color: #333;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .display.special {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: #333;
+            animation: rainbow 1s ease-in-out;
+            font-weight: 700;
+        }
+
+        @keyframes rainbow {
+            0% { background: linear-gradient(45deg, #ff6b6b, #feca57); }
+            25% { background: linear-gradient(45deg, #48dbfb, #0abde3); }
+            50% { background: linear-gradient(45deg, #1dd1a1, #10ac84); }
+            75% { background: linear-gradient(45deg, #a55eea, #8c7ae6); }
+            100% { background: linear-gradient(45deg, #ff6b6b, #feca57); }
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        button {
+            border: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .number, .decimal {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .number:hover, .decimal:hover {
+            background: #dee2e6;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .operator {
+            background: #667eea;
+            color: white;
+        }
+
+        .operator:hover {
+            background: #5a6fd8;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .equals {
+            background: #28a745;
+            color: white;
+            grid-column: span 2;
+        }
+
+        .equals:hover {
+            background: #218838;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        }
+
+        .clear {
+            background: #dc3545;
+            color: white;
+            grid-column: span 2;
+        }
+
+        .clear:hover {
+            background: #c82333;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+        }
+
+        .clear.special-clear {
+            animation: specialClear 2s ease-in-out;
+        }
+
+        @keyframes specialClear {
+            0%, 100% { background: #dc3545; }
+            25% { background: #ff6b6b; }
+            50% { background: #feca57; }
+            75% { background: #48dbfb; }
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .show {
+            animation: fadeInScale 0.5s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions" id="instructions">
+        اضغط 1+1 و بعدها =
+    </div>
+
+    <div class="calculator">
+        <input type="text" class="display" id="display" readonly>
+        
+        <div class="buttons">
+            <button class="clear" id="clearBtn" onclick="clearDisplay()">Clear</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            <button class="operator" onclick="appendToDisplay('*')">×</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            
+            <button class="number" onclick="appendToDisplay('7')">7</button>
+            <button class="number" onclick="appendToDisplay('8')">8</button>
+            <button class="number" onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            
+            <button class="number" onclick="appendToDisplay('4')">4</button>
+            <button class="number" onclick="appendToDisplay('5')">5</button>
+            <button class="number" onclick="appendToDisplay('6')">6</button>
+            <button class="equals" onclick="calculate()" rowspan="2">=</button>
+            
+            <button class="number" onclick="appendToDisplay('1')">1</button>
+            <button class="number" onclick="appendToDisplay('2')">2</button>
+            <button class="number" onclick="appendToDisplay('3')">3</button>
+            
+            <button class="number zero" onclick="appendToDisplay('0')">0</button>
+            <button class="decimal" onclick="appendToDisplay('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let instructions = document.getElementById('instructions');
+        let clearBtn = document.getElementById('clearBtn');
+        let currentInput = '';
+        let showedUsBitch = false;
+
+        function appendToDisplay(value) {
+            currentInput += value;
+            display.value = currentInput;
+            
+            // Add button press animation
+            event.target.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.style.transform = '';
+            }, 150);
+        }
+
+        function clearDisplay() {
+            if (showedUsBitch) {
+                display.value = 'u n me ? who is u n me?';
+                display.classList.add('special');
+                clearBtn.classList.add('special-clear');
+                
+                // Reset after showing the message
+                setTimeout(() => {
+                    display.value = '';
+                    display.classList.remove('special');
+                    clearBtn.classList.remove('special-clear');
+                    showedUsBitch = false;
+                    instructions.textContent = 'اضغط 1+1 و بعدها =';
+                    instructions.classList.add('show');
+                }, 3000);
+            } else {
+                currentInput = '';
+                display.value = '';
+                display.classList.remove('special');
+            }
+        }
+
+        function calculate() {
+            try {
+                // Check for the special case
+                if (currentInput.trim() === '1+1' || currentInput.trim() === '1 + 1') {
+                    display.value = 'us bitch';
+                    display.classList.add('special');
+                    showedUsBitch = true;
+                    
+                    // Update instructions
+                    instructions.textContent = 'و هسة اضغط clear';
+                    instructions.classList.add('show');
+                    
+                    // Add celebration effect
+                    createConfetti();
+                    
+                    currentInput = '';
+                    return;
+                }
+
+                // Replace × with * for calculation
+                let expression = currentInput.replace(/×/g, '*');
+                
+                // Evaluate the expression
+                let result = eval(expression);
+                display.value = result;
+                currentInput = result.toString();
+                
+                // Add calculation animation
+                display.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    display.style.transform = 'scale(1)';
+                }, 200);
+                
+            } catch (error) {
+                display.value = 'Error';
+                display.style.background = '#ff6b6b';
+                setTimeout(() => {
+                    display.style.background = '#f8f9fa';
+                }, 1000);
+                currentInput = '';
+            }
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                createConfettiPiece();
+            }
+        }
+
+        function createConfettiPiece() {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.top = '-10px';
+            confetti.style.borderRadius = '50%';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '1000';
+            
+            document.body.appendChild(confetti);
+            
+            const animation = confetti.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight + 100}px) rotate(720deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 2000 + 1000,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        }
+
+        // Allow keyboard input
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            
+            if (key >= '0' && key <= '9') {
+                appendToDisplay(key);
+            } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+                appendToDisplay(key);
+            } else if (key === '.') {
+                appendToDisplay(key);
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                clearDisplay();
+            }
+        });
+
+        // Add random button glow effect
+        setInterval(() => {
+            const buttons = document.querySelectorAll('button');
+            const randomButton = buttons[Math.floor(Math.random() * buttons.length)];
+            randomButton.style.boxShadow = '0 0 20px rgba(102, 126, 234, 0.6)';
+            setTimeout(() => {
+                randomButton.style.boxShadow = '';
+            }, 1000);
+        }, 3000);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96f00a6316422e45',t:'MTc1NTE3MDE5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
