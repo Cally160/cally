@@ -21,7 +21,33 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
+    #section-tabs {
+  position: sticky;
+  top: 0; 
+  z-index: 50;
+  background: white;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+#section-tabs .tab-btn {
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 9999px; /* يخليها بيضاوية */
+  background: #f3f4f6;
+  transition: all 0.3s ease;
+}
+
+#section-tabs .tab-btn:hover {
+  background: #e11d48;
+  color: white;
+}
+
         body { font-family: 'Tajawal', Arial, sans-serif; }
         .fade-in { opacity: 0; animation: fadeIn 0.6s ease-in forwards; }
         @keyframes fadeIn { to { opacity: 1; } }
@@ -60,6 +86,9 @@
                 0 10px 20px rgba(0,0,0,0.1),
                 0 6px 6px rgba(0,0,0,0.1);
         }
+       
+        
+       
     </style>
 </head>
 <body class="bg-white text-cally-dark">
@@ -95,6 +124,7 @@
                         <span id="cart-count" class="absolute -top-1 -right-1 bg-cally-red text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
                     </button>
                 </div>
+                
                 <div class="hidden md:block">
                     <div class="flex items-center space-x-reverse space-x-8">
                         <button onclick="showPage('home')" class="nav-link text-cally-dark hover:text-cally-red transition-colors duration-300 font-medium">الرئيسية</button>
@@ -122,6 +152,7 @@
             </div>
         </div>
     </nav>
+    
 
     <!-- Home Page -->
     <div id="home-page" class="page-content">
@@ -175,7 +206,7 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- Features Section -->
         <section class="py-32 bg-white relative overflow-hidden">
             <!-- Background Pattern -->
@@ -227,13 +258,13 @@
     </div>
 
     <!-- Products Page -->
-    <div id="products-page" class="page-content hidden">
+<div id="products-page" class="page-content hidden">
         <section class="py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <id class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h1 class="text-4xl font-bold text-center mb-8 text-cally-dark">منتجاتنا</h1>
                 
                 <!-- Filter Button -->
-                <div class="mb-8 flex justify-center">
+                <div class="flex items-center space-x-reverse space-x-8">
                     <button onclick="toggleFilters()" class="bg-white rounded-full shadow-lg p-4 hover:shadow-xl transition-all duration-300 transform hover:scale-110 group">
                         <div class="flex items-center space-x-reverse space-x-2">
                             <svg class="w-6 h-6 text-cally-red group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -243,6 +274,31 @@
                         </div>
                     </button>
                 </div>
+            
+
+        <!-- 🔹 شريط الأقسام -->
+        <div id="section-tabs" >
+        <button onclick="filterSection('all')" 
+          class="tab-btn bg-red-200 px-4 py-2 rounded-lg hover:bg-cally-red hover:text-white">
+     الكل
+        </button>
+        <button onclick="filterSection('new')" 
+          class="tab-btn bg-gray-200 px-4 py-2 rounded-lg hover:bg-cally-red hover:text-white">
+     الجديد
+        </button>
+        <button onclick="filterSection('bestseller')" 
+          class="tab-btn bg-gray-200 px-4 py-2 rounded-lg hover:bg-cally-red hover:text-white">
+     الأكثر مبيعاً
+        </button>
+        <button onclick="filterSection('offers')" 
+          class="tab-btn bg-gray-200 px-4 py-2 rounded-lg hover:bg-cally-red hover:text-white">
+     العروض
+         </button>
+        </div>
+
+
+
+
 
                 <!-- Filters Panel (Hidden by default) -->
                 <div id="filters-panel" class="bg-white rounded-2xl shadow-lg p-6 mb-8 hidden transform transition-all duration-300 scale-95 opacity-0">
@@ -535,449 +591,637 @@
                     </div>
                 </div>
 
+
                 <!-- Products Grid -->
-                <div id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Product 1 -->
-                    <div class="product-card bg-white rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 hover:rotate-1 group" 
-                         data-category="أقراط" data-price="50" data-gender="للجميع" data-availability="متوفر" data-type="ريزن">
-                        <div class="h-64 bg-gradient-to-br from-pink-100 via-red-50 to-red-100 flex items-center justify-center relative overflow-hidden">
-                            <!-- Availability Badge -->
+     <dive id="products-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    
+  
+
+                   
+                    <!-- Product taste 2 -->
+                     <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                         data-category="أساور" data-price="7000" data-gender="مشترك" data-availability="متوفر" data-type="ريزن" data-section="bestseller">
+                        
+                                <div class="carousel-container">
+                         <div class="carousel-track" style="transform: translateX(0);">
+                                <img src="picturs/tabark3.jpg" alt="صورة 1">
+                                <img src="picturs/tabark.jpg" alt="صورة 2">
+                                 <img src="picturs/tabark2.jpg" alt="صورة 3">
+                         </div>
+
+                        <!-- Buttons -->
+                        <button class="prev" onclick="prevThis(this)">&#10094;</button>
+                        <button class="next" onclick="nextThis(this)">&#10095;</button>
+                        <!-- Availability Badge -->
                             <div class="absolute top-4 left-4 z-20">
                                 <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
                                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                     متوفر
                                 </span>
                             </div>
                             
-                            <div class="absolute inset-0 bg-gradient-to-br from-transparent via-white/20 to-transparent transform -skew-y-12 translate-x-full group-hover:translate-x-[-100%] transition-transform duration-1000"></div>
-                            <div class="relative z-10 transform group-hover:scale-110 transition-transform duration-300">
-                                <div class="w-24 h-24 bg-gradient-to-br from-cally-red to-red-600 rounded-full flex items-center justify-center shadow-lg transform rotate-12 group-hover:rotate-0 transition-transform duration-300">
-                                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                                        <circle cx="12" cy="12" r="3"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="absolute top-4 right-4 w-8 h-8 bg-white/30 rounded-full backdrop-blur-sm"></div>
-                            <div class="absolute bottom-4 left-4 w-6 h-6 bg-white/20 rounded-full backdrop-blur-sm"></div>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-bold text-cally-dark">أقراط عصرية</h3>
-                                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium">للجميع</span>
-                            </div>
-                            <p class="text-gray-600 mb-4">أقراط أنيقة مصنوعة يدوياً بتصاميم عصرية</p>
-                            <div class="space-y-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-cally-red">٥٠ ر.س</span>
-                                </div>
-                                
-                                <!-- Product variants -->
-                                <div class="space-y-2">
-                                    <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
-                                    <div class="flex space-x-reverse space-x-2">
-                                        <button onclick="selectVariant(this, 'أقراط عصرية', 'أحمر')" class="variant-btn w-8 h-8 bg-red-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أحمر" data-variant="أحمر"></button>
-                                        <button onclick="selectVariant(this, 'أقراط عصرية', 'أزرق')" class="variant-btn w-8 h-8 bg-blue-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أزرق" data-variant="أزرق"></button>
-                                        <button onclick="selectVariant(this, 'أقراط عصرية', 'ذهبي')" class="variant-btn w-8 h-8 bg-yellow-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="ذهبي" data-variant="ذهبي"></button>
-                                    </div>
-                                    <span id="selected-variant-أقراط عصرية" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
-                                </div>
-
-                                <!-- Quantity selector -->
-                                <div class="space-y-2">
-                                    <span class="text-sm text-gray-600 font-medium">الكمية:</span>
-                                    <div class="flex items-center space-x-reverse space-x-3">
-                                        <button onclick="changeQuantity('أقراط عصرية', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
-                                        <span id="quantity-أقراط عصرية" class="w-8 text-center font-medium">1</span>
-                                        <button onclick="changeQuantity('أقراط عصرية', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
-                                    </div>
-                                </div>
-
-                                <!-- Action buttons -->
-                                <div class="flex items-center justify-between pt-2">
-                                    <button onclick="customDesign('أقراط عصرية')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
-                                        تصميم مخصص
-                                    </button>
-                                    <button onclick="addToCartWithOptions('أقراط عصرية', 50)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 2 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                         data-category="قلادات" data-price="120" data-gender="نساء" data-availability="نفذ" data-type="صلصال">
-                        <div class="h-64 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center relative">
-                            <!-- Availability Badge -->
-                            <div class="absolute top-4 left-4 z-20">
-                                <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
-                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                    </svg>
-                                    نفذ
-                                </span>
-                            </div>
                             
-                            <svg class="w-24 h-24 text-cally-red" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
                         </div>
+                        
+                        <!-- Product details -->
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-bold text-cally-dark">عقد مميز</h3>
-                                <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs font-medium">نساء</span>
+                                <h3 class="text-xl font-bold text-cally-dark">أسوار</h3>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">مشترك</span>
                             </div>
-                            <p class="text-gray-600 mb-4">عقد أنيق بتصميم فريد يناسب المناسبات الخاصة</p>
+                            <p class="text-gray-600 mb-4">أسوار بتصميم مخصص عصري وأنيق للاستخدام اليومي</p>
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-cally-red">١٢٠ ر.س</span>
+                                    <span class="text-2xl font-bold text-cally-red">  7000 د.ع </span>
                                 </div>
                                 
                                 <!-- Product variants -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
                                     <div class="flex space-x-reverse space-x-2">
-                                        <button onclick="selectVariant(this, 'عقد مميز', 'بنفسجي')" class="variant-btn w-8 h-8 bg-purple-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="بنفسجي" data-variant="بنفسجي"></button>
-                                        <button onclick="selectVariant(this, 'عقد مميز', 'وردي')" class="variant-btn w-8 h-8 bg-pink-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="وردي" data-variant="وردي"></button>
-                                        <button onclick="selectVariant(this, 'عقد مميز', 'فضي')" class="variant-btn w-8 h-8 bg-gray-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="فضي" data-variant="فضي"></button>
+                                        <button onclick="selectVariant(this, 'أسوار', 'فضي')" class="variant-btn w-8 h-8 bg-gray-100 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="فضي" data-variant="فضي"></button>
+                                        
+                                        
                                     </div>
-                                    <span id="selected-variant-عقد مميز" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
+                                    <span id="selected-variant-أسوار" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
                                 </div>
-
+                                
                                 <!-- Quantity selector -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">الكمية:</span>
                                     <div class="flex items-center space-x-reverse space-x-3">
-                                        <button onclick="changeQuantity('عقد مميز', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
-                                        <span id="quantity-عقد مميز" class="w-8 text-center font-medium">1</span>
-                                        <button onclick="changeQuantity('عقد مميز', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
+                                        <button onclick="changeQuantity('أسوار', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
+                                        <span id="quantity-أسوار" class="w-8 text-center font-medium">1</span>
+                                        <button onclick="changeQuantity('أسوار', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
                                     </div>
                                 </div>
 
                                 <!-- Action buttons -->
                                 <div class="flex items-center justify-between pt-2">
-                                    <button onclick="customDesign('عقد مميز')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
+                                    <button onclick="customDesign('أسوار')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
                                         تصميم مخصص
                                     </button>
-                                    <button disabled class="bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed opacity-60">نفذ من المخزن</button>
+                                    <button onclick="addToCartWithOptions('أسوار', 7000)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                
 
-                    <!-- Product 3 -->
+  
+
+                    <!-- Product taste 1 -->
                     <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                         data-category="أساور" data-price="80" data-gender="نساء" data-availability="متوفر" data-type="أخرى">
-                        <div class="h-64 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center relative">
-                            <!-- Availability Badge -->
+                         data-category="أساور" data-price="5000" data-gender="مشترك" data-availability="متوفر" data-type="صلصال" data-section="new">
+                        
+                                <div class="carousel-container">
+                         <div class="carousel-track" style="transform: translateX(0);">
+                                <img src="picturs/Cally shop_20250725_201300_0000 (2).png" alt="صورة 1">
+                                <img src="picturs/yinyang.png" alt="صورة 2">
+
+                               
+                         </div>
+
+                     <!-- Buttons -->
+                        <button class="prev" onclick="prevThis(this)">&#10094;</button>
+                        <button class="next" onclick="nextThis(this)">&#10095;</button>
+                        <!-- Availability Badge -->
                             <div class="absolute top-4 left-4 z-20">
                                 <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
                                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                     متوفر
                                 </span>
                             </div>
                             
-                            <svg class="w-24 h-24 text-cally-red" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
+                            
                         </div>
+                        
+                        <!-- Product details -->
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-bold text-cally-dark">سوار يدوي</h3>
-                                <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs font-medium">نساء</span>
+                                <h3 class="text-xl font-bold text-cally-dark">أساورالينغ يانغ</h3>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">مشترك</span>
                             </div>
-                            <p class="text-gray-600 mb-4">سوار مصنوع بعناية من مواد عالية الجودة</p>
+                            <p class="text-gray-600 mb-4">أساور منسوجة بتصميم ينغ يانغ، تجسّد رمزية التوازن والانسجام في لمسة أنيقة</p>
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-cally-red">٨٠ ر.س</span>
+                                    <span class="text-2xl font-bold text-cally-red">  5000 د.ع </span>
                                 </div>
                                 
                                 <!-- Product variants -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
                                     <div class="flex space-x-reverse space-x-2">
-                                        <button onclick="selectVariant(this, 'سوار يدوي', 'أزرق')" class="variant-btn w-8 h-8 bg-blue-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أزرق" data-variant="أزرق"></button>
-                                        <button onclick="selectVariant(this, 'سوار يدوي', 'أخضر')" class="variant-btn w-8 h-8 bg-green-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أخضر" data-variant="أخضر"></button>
-                                        <button onclick="selectVariant(this, 'سوار يدوي', 'برتقالي')" class="variant-btn w-8 h-8 bg-orange-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="برتقالي" data-variant="برتقالي"></button>
+                                        <button onclick="selectVariant(this, 'أساور الينغ يانغ', 'أسود و أبيض')" class="variant-btn w-8 h-8 half-bg rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أسود و أبيض" data-variant="أسود و أبيض"></button>
+                                        
+                                        
                                     </div>
-                                    <span id="selected-variant-سوار يدوي" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
+                                    <span id="selected-variant-أساور الينغ يانغ" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
                                 </div>
-
+                                
                                 <!-- Quantity selector -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">الكمية:</span>
                                     <div class="flex items-center space-x-reverse space-x-3">
-                                        <button onclick="changeQuantity('سوار يدوي', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
-                                        <span id="quantity-سوار يدوي" class="w-8 text-center font-medium">1</span>
-                                        <button onclick="changeQuantity('سوار يدوي', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
+                                        <button onclick="changeQuantity('أساور الينغ يانغ', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
+                                        <span id="quantity-أساور الينغ يانغ" class="w-8 text-center font-medium">1</span>
+                                        <button onclick="changeQuantity('أساور الينغ يانغ', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
                                     </div>
                                 </div>
 
                                 <!-- Action buttons -->
                                 <div class="flex items-center justify-between pt-2">
-                                    <button onclick="customDesign('سوار يدوي')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
+                                    <button onclick="customDesign('أساور الينغ يانغ')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
                                         تصميم مخصص
                                     </button>
-                                    <button onclick="addToCartWithOptions('سوار يدوي', 80)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
+                                    <button onclick="addToCartWithOptions('أساور الينغ يانغ', 5000)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <style>
+                        .half-bg { 
+                            background: linear-gradient(to right, black 50%, white 50%);
+                        }
+                    </style>
 
-                    <!-- Product 4 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                         data-category="خواتم" data-price="6500" data-gender="رجال" data-availability="متوفر" data-type="ريزن">
-                        <div class="h-64 bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center relative">
-                            <!-- Availability Badge -->
+                     <!-- Product taste 4 -->
+                     <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                         data-category="قلادات" data-price="7000" data-gender="رجال" data-availability="متوفر" data-type="صلصال" data-section="bestseller">
+                        
+                                <div class="carousel-container">
+                         <div class="carousel-track" style="transform: translateX(0);">
+                                <img src="picturs/scolls.jpg" alt="صورة 1">
+                                <img src="picturs/scoll 2.jpg" alt="صورة 3">
+                                 <img src="picturs/scoll3.jpg" alt="صورة 2">
+                         </div>
+
+                        <!-- Buttons -->
+                        <button class="prev" onclick="prevThis(this)">&#10094;</button>
+                        <button class="next" onclick="nextThis(this)">&#10095;</button>
+                        <!-- Availability Badge -->
                             <div class="absolute top-4 left-4 z-20">
                                 <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
                                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                     متوفر
                                 </span>
                             </div>
                             
-                            <svg class="w-24 h-24 text-cally-red" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
+                            
                         </div>
+                        
+                        <!-- Product details -->
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-bold text-cally-dark">خاتم أنيق</h3>
+                                <h3 class="text-xl font-bold text-cally-dark">scoll necklace</h3>
                                 <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">رجال</span>
                             </div>
-                            <p class="text-gray-600 mb-4">خاتم بتصميم عصري وأنيق للاستخدام اليومي</p>
+                            <p class="text-gray-600 mb-4">أسوار بتصميم مخصص عصري وأنيق للاستخدام اليومي</p>
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-cally-red">٦٥٠٠ ر.س</span>
+                                    <span class="text-2xl font-bold text-cally-red">  7000 د.ع </span>
                                 </div>
                                 
                                 <!-- Product variants -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
                                     <div class="flex space-x-reverse space-x-2">
-                                        <button onclick="selectVariant(this, 'خاتم أنيق', 'ذهبي')" class="variant-btn w-8 h-8 bg-yellow-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="ذهبي" data-variant="ذهبي"></button>
-                                        <button onclick="selectVariant(this, 'خاتم أنيق', 'فضي')" class="variant-btn w-8 h-8 bg-gray-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="فضي" data-variant="فضي"></button>
-                                        <button onclick="selectVariant(this, 'خاتم أنيق', 'ذهب وردي')" class="variant-btn w-8 h-8 bg-rose-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="ذهب وردي" data-variant="ذهب وردي"></button>
+                                        <button onclick="selectVariant(this, 'scoll necklace', 'نصف جمجمة')" class="variant-btn w-8 h-8 bg-gray-100 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="نصف جمجمة" data-variant="نصف جمجمة"></button>
+                                        <button onclick="selectVariant(this, 'scoll necklace', 'جمجمة كاملة')" class="variant-btn w-8 h-8 bg-gray-100 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="جمجمةكاملة" data-variant="جمجمة كاملة"></button>
+                                        
+                                        
                                     </div>
-                                    <span id="selected-variant-خاتم أنيق" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
-                                </div>
-
-                                <!-- Quantity selector -->
-                                <div class="space-y-2">
-                                    <span class="text-sm text-gray-600 font-medium">الكمية:</span>
-                                    <div class="flex items-center space-x-reverse space-x-3">
-                                        <button onclick="changeQuantity('خاتم أنيق', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
-                                        <span id="quantity-خاتم أنيق" class="w-8 text-center font-medium">1</span>
-                                        <button onclick="changeQuantity('خاتم أنيق', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
-                                    </div>
-                                </div>
-
-                                <!-- Action buttons -->
-                                <div class="flex items-center justify-between pt-2">
-                                    <button onclick="customDesign('خاتم أنيق')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
-                                        تصميم مخصص
-                                    </button>
-                                    <button onclick="addToCartWithOptions('خاتم أنيق', 6500)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product 5 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                         data-category="إكسسوارات شعر" data-price="35" data-gender="نساء" data-availability="نفذ" data-type="صلصال">
-                        <div class="h-64 bg-gradient-to-br from-yellow-100 to-orange-100 flex items-center justify-center relative">
-                            <!-- Availability Badge -->
-                            <div class="absolute top-4 left-4 z-20">
-                                <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
-                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                    </svg>
-                                    نفذ
-                                </span>
-                            </div>
-                            
-                            <svg class="w-24 h-24 text-cally-red" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                                <circle cx="12" cy="12" r="3"/>
-                            </svg>
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-bold text-cally-dark">دبوس شعر</h3>
-                                <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs font-medium">نساء</span>
-                            </div>
-                            <p class="text-gray-600 mb-4">دبابيس شعر مزينة بتفاصيل جميلة ومميزة</p>
-                            <div class="space-y-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-cally-red">٣٥ ر.س</span>
+                                    <span id="selected-variant-scoll necklace" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
                                 </div>
                                 
-                                <!-- Product variants -->
-                                <div class="space-y-2">
-                                    <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
-                                    <div class="flex space-x-reverse space-x-2">
-                                        <button onclick="selectVariant(this, 'دبوس شعر', 'ذهبي')" class="variant-btn w-8 h-8 bg-yellow-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="ذهبي" data-variant="ذهبي"></button>
-                                        <button onclick="selectVariant(this, 'دبوس شعر', 'برتقالي')" class="variant-btn w-8 h-8 bg-orange-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="برتقالي" data-variant="برتقالي"></button>
-                                        <button onclick="selectVariant(this, 'دبوس شعر', 'أحمر')" class="variant-btn w-8 h-8 bg-red-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أحمر" data-variant="أحمر"></button>
-                                    </div>
-                                    <span id="selected-variant-دبوس شعر" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
-                                </div>
-
                                 <!-- Quantity selector -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">الكمية:</span>
                                     <div class="flex items-center space-x-reverse space-x-3">
-                                        <button onclick="changeQuantity('دبوس شعر', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
-                                        <span id="quantity-دبوس شعر" class="w-8 text-center font-medium">1</span>
-                                        <button onclick="changeQuantity('دبوس شعر', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
+                                        <button onclick="changeQuantity('scoll Necklaces', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
+                                        <span id="quantity-scoll necklace" class="w-8 text-center font-medium">1</span>
+                                        <button onclick="changeQuantity('scoll necklace', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
                                     </div>
                                 </div>
 
                                 <!-- Action buttons -->
                                 <div class="flex items-center justify-between pt-2">
-                                    <button onclick="customDesign('دبوس شعر')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
+                                    <button onclick="customDesign('scoll necklace')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
                                         تصميم مخصص
                                     </button>
-                                    <button disabled class="bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed opacity-60">نفذ من المخزن</button>
+                                    <button onclick="addToCartWithOptions('scoll necklace', 7000)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                        
+                   <!-- Product taste 5 -->
+                     <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                         data-category="قلادات" data-price="10000" data-gender="مشترك" data-availability="متوفر" data-type="صلصال" data-section="bestseller">
+                        
+                                <div class="carousel-container">
+                         <div class="carousel-track" style="transform: translateX(0);">
+                                <img src="picturs/heart.jpg" alt="صورة 1">
+                                <img src="picturs/heart2.jpg" alt="صورة 2">
+                                 <img src="picturs/heart3.jpg" alt="صورة 3">
+                         </div>
 
-                    <!-- Product 6 -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                         data-category="أطقم" data-price="8000" data-gender="نساء" data-availability="متوفر" data-type="أخرى">
-                        <div class="h-64 bg-gradient-to-br from-red-100 to-pink-100 flex items-center justify-center relative">
-                            <!-- Availability Badge -->
+                        <!-- Buttons -->
+                        <button class="prev" onclick="prevThis(this)">&#10094;</button>
+                        <button class="next" onclick="nextThis(this)">&#10095;</button>
+                        <!-- Availability Badge -->
                             <div class="absolute top-4 left-4 z-20">
                                 <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
                                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                     متوفر
                                 </span>
                             </div>
                             
-                            <svg class="w-24 h-24 text-cally-red" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
+                            
                         </div>
+                        
+                        <!-- Product details -->
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-bold text-cally-dark">طقم مجوهرات</h3>
-                                <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded-full text-xs font-medium">نساء</span>
+                                <h3 class="text-xl font-bold text-cally-dark">You have my heart</h3>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">مشترك</span>
                             </div>
-                            <p class="text-gray-600 mb-4">طقم كامل من الإكسسوارات المتناسقة</p>
+                            <p class="text-gray-600 mb-4">أسوار بتصميم مخصص عصري وأنيق للاستخدام اليومي</p>
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-cally-red">٨٠٠٠ ر.س</span>
+                                    <span class="text-2xl font-bold text-cally-red">  10000 د.ع </span>
                                 </div>
                                 
                                 <!-- Product variants -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
                                     <div class="flex space-x-reverse space-x-2">
-                                        <button onclick="selectVariant(this, 'طقم مجوهرات', 'أحمر')" class="variant-btn w-8 h-8 bg-red-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أحمر" data-variant="أحمر"></button>
-                                        <button onclick="selectVariant(this, 'طقم مجوهرات', 'وردي')" class="variant-btn w-8 h-8 bg-pink-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="وردي" data-variant="وردي"></button>
-                                        <button onclick="selectVariant(this, 'طقم مجوهرات', 'بنفسجي')" class="variant-btn w-8 h-8 bg-purple-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="بنفسجي" data-variant="بنفسجي"></button>
-                                        <button onclick="selectVariant(this, 'طقم مجوهرات', 'أزرق')" class="variant-btn w-8 h-8 bg-blue-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أزرق" data-variant="أزرق"></button>
+                                        <button onclick="selectVariant(this, 'You have my heart', 'احمر')" class="variant-btn w-8 h-8 bg-red-100 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="احمر" data-variant="احمر"></button>
+                                       
+                                        
+                                        
+                                        
                                     </div>
-                                    <span id="selected-variant-طقم مجوهرات" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
+                                    <span id="selected-variant-You have my heart" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
                                 </div>
-
+                                
                                 <!-- Quantity selector -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">الكمية:</span>
                                     <div class="flex items-center space-x-reverse space-x-3">
-                                        <button onclick="changeQuantity('طقم مجوهرات', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
-                                        <span id="quantity-طقم مجوهرات" class="w-8 text-center font-medium">1</span>
-                                        <button onclick="changeQuantity('طقم مجوهرات', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
+                                        <button onclick="changeQuantity('You have my heart', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
+                                        <span id="quantity-You have my heart" class="w-8 text-center font-medium">1</span>
+                                        <button onclick="changeQuantity('You have my heart', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
                                     </div>
                                 </div>
 
                                 <!-- Action buttons -->
                                 <div class="flex items-center justify-between pt-2">
-                                    <button onclick="customDesign('طقم مجوهرات')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
+                                    <button onclick="customDesign('You have my heart')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
                                         تصميم مخصص
                                     </button>
-                                    <button onclick="addToCartWithOptions('طقم مجوهرات', 8000)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
+                                    <button onclick="addToCartWithOptions('You have my heart', 10000)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Product 7 - Others Category -->
-                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                         data-category="أخرى" data-price="150" data-gender="للجميع" data-availability="متوفر" data-type="أخرى">
-                        <div class="h-64 bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center relative">
-                            <!-- Availability Badge -->
+                    <!-- Product taste 6 -->
+                     <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                         data-category="قلادات" data-price="7000" data-gender="مشترك" data-availability="متوفر" data-type="ريزن" data-section="bestseller">
+                        
+                                <div class="carousel-container">
+                         <div class="carousel-track" style="transform: translateX(0);">
+                                <img src="picturs/rn.jpg" alt="صورة 1">
+                                <img src="picturs/rn1.jpg" alt="صورة 2">
+                                 <img src="picturs/rn 2.jpg" alt="صورة 3">
+                                 <img src="picturs/rn3.jpg" alt="صورة 4">
+                                 <img src="picturs/rn4.jpg" alt="صورة 5">
+                                 
+
+
+
+                         </div>
+
+                        <!-- Buttons -->
+                        <button class="prev" onclick="prevThis(this)">&#10094;</button>
+                        <button class="next" onclick="nextThis(this)">&#10095;</button>
+                        <!-- Availability Badge -->
                             <div class="absolute top-4 left-4 z-20">
                                 <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
                                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                     متوفر
                                 </span>
                             </div>
                             
-                            <svg class="w-24 h-24 text-cally-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                            </svg>
+                            
                         </div>
+                        
+                        <!-- Product details -->
                         <div class="p-6">
                             <div class="flex justify-between items-start mb-2">
-                                <h3 class="text-xl font-bold text-cally-dark">حقيبة يد صغيرة</h3>
-                                <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium">للجميع</span>
+                                <h3 class="text-xl font-bold text-cally-dark">زهرة ابدية</h3>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">مشترك</span>
                             </div>
-                            <p class="text-gray-600 mb-4">حقيبة يد صغيرة مصنوعة يدوياً بتصميم أنيق</p>
+                            <p class="text-gray-600 mb-4">أسوار بتصميم مخصص عصري وأنيق للاستخدام اليومي</p>
                             <div class="space-y-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-bold text-cally-red">١٥٠ ر.س</span>
+                                    <span class="text-2xl font-bold text-cally-red">  7000 د.ع </span>
                                 </div>
                                 
                                 <!-- Product variants -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
                                     <div class="flex space-x-reverse space-x-2">
-                                        <button onclick="selectVariant(this, 'حقيبة يد صغيرة', 'بني')" class="variant-btn w-8 h-8 bg-amber-600 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="بني" data-variant="بني"></button>
-                                        <button onclick="selectVariant(this, 'حقيبة يد صغيرة', 'أسود')" class="variant-btn w-8 h-8 bg-gray-800 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="أسود" data-variant="أسود"></button>
-                                        <button onclick="selectVariant(this, 'حقيبة يد صغيرة', 'بيج')" class="variant-btn w-8 h-8 bg-stone-300 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="بيج" data-variant="بيج"></button>
-                                    </div>
-                                    <span id="selected-variant-حقيبة يد صغيرة" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
-                                </div>
+                                        <button onclick="selectVariant(this, 'زهرة ابدية', 'وردي')" class="variant-btn w-8 h-8 bg-pink-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="وردي" data-variant="وردي"></button>
+                                        <button onclick="selectVariant(this, 'زهرة ابدية', 'احمر')" class="variant-btn w-8 h-8 bg-red-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="احمر" data-variant="احمر"></button>
+                                        <button onclick="selectVariant(this, 'زهرة ابدية', 'بنفسجي')" class="variant-btn w-8 h-8 bg-purple-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="بنفسجي" data-variant="بنفسجي"></button>
+                                        <button onclick="selectVariant(this, 'زهرة ابدية', 'ابيض')" class="variant-btn w-8 h-8 bg-white-400 rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="ابيض" data-variant="ابيض"></button>
 
+                                        
+                                        
+                                        
+                                    </div>
+                                    <span id="selected-variant-زهرة ابدية" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
+                                </div>
+                                
                                 <!-- Quantity selector -->
                                 <div class="space-y-2">
                                     <span class="text-sm text-gray-600 font-medium">الكمية:</span>
                                     <div class="flex items-center space-x-reverse space-x-3">
-                                        <button onclick="changeQuantity('حقيبة يد صغيرة', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
-                                        <span id="quantity-حقيبة يد صغيرة" class="w-8 text-center font-medium">1</span>
-                                        <button onclick="changeQuantity('حقيبة يد صغيرة', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
+                                        <button onclick="changeQuantity('زهرة ابدية', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
+                                        <span id="quantity-زهرة ابدية" class="w-8 text-center font-medium">1</span>
+                                        <button onclick="changeQuantity('زهرة ابدية', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
                                     </div>
                                 </div>
 
                                 <!-- Action buttons -->
                                 <div class="flex items-center justify-between pt-2">
-                                    <button onclick="customDesign('حقيبة يد صغيرة')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
+                                    <button onclick="customDesign('زهرة ابدية')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
                                         تصميم مخصص
                                     </button>
-                                    <button onclick="addToCartWithOptions('حقيبة يد صغيرة', 150)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
+                                    <button onclick="addToCartWithOptions('زهرة ابدية', 7000)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Product taste 7 -->
+                     <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                         data-category="أساور" data-price="3000" data-gender="مشترك" data-availability="متوفر" data-type="أخرى" data-section="bestseller">
+                        
+                                <div class="carousel-container">
+                         <div class="carousel-track" style="transform: translateX(0);">
+                                <img src="picturs/7i.jpg" alt="صورة 1">
+                                <img src="picturs/7i1.jpg" alt="صورة 2">
+                                 <img src="picturs/7i 2.jpg" alt="صورة 3">
+                         </div>
+
+                        <!-- Buttons -->
+                        <button class="prev" onclick="prevThis(this)">&#10094;</button>
+                        <button class="next" onclick="nextThis(this)">&#10095;</button>
+                        <!-- Availability Badge -->
+                            <div class="absolute top-4 left-4 z-20">
+                                <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    متوفر
+                                </span>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        <!-- Product details -->
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-cally-dark">أسوار حياكة</h3>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">مشترك</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">أسوار بتصميم مخصص عصري وأنيق للاستخدام اليومي</p>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-2xl font-bold text-cally-red">  3000 د.ع </span>
+                                </div>
+                                
+                                <!-- Product variants -->
+                                <div class="space-y-2">
+                                    <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
+                                    <div class="flex space-x-reverse space-x-2">
+                                        <button onclick="selectVariant(this, 'أسوار حياكة', 'ناعم')" class="variant-btn w-8 h-8 bg-black rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="ناعم" data-variant="ناعم"></button>
+                                        <button onclick="selectVariant(this, 'أسوار حياكة', 'خشن')" class="variant-btn w-8 h-8 bg-black rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="خشن" data-variant="خشن"></button>
+                                       
+                                        
+                                        
+                                        
+                                    </div>
+                                    <span id="selected-variant-أسوار حياكة" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
+                                </div>
+                                
+                                <!-- Quantity selector -->
+                                <div class="space-y-2">
+                                    <span class="text-sm text-gray-600 font-medium">الكمية:</span>
+                                    <div class="flex items-center space-x-reverse space-x-3">
+                                        <button onclick="changeQuantity('أسوار حياكة', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
+                                        <span id="quantity-أسوار حياكة" class="w-8 text-center font-medium">1</span>
+                                        <button onclick="changeQuantity('أسوار حياكة', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- Action buttons -->
+                                <div class="flex items-center justify-between pt-2">
+                                    <button onclick="customDesign('أسوار حياكة')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
+                                        تصميم مخصص
+                                    </button>
+                                    <button onclick="addToCartWithOptions('أسوار حياكة', 3000)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Product taste 3-->
+                    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                         data-category="قلادات" data-price="7000" data-gender="رجال" data-availability="متوفر" data-type="صلصال" data-section="الأكثر">
+                        
+                                <div class="carousel-container">
+                         <div class="carousel-track" style="transform: translateX(0);">
+                                <img src="picturs/bat.jpg" alt="صورة 1">
+                                <img src="picturs/bat2.jpg" alt="صورة 2">
+                                 
+                         </div>
+
+                     <!-- Buttons -->
+                        <button class="prev" onclick="prevThis(this)">&#10094;</button>
+                        <button class="next" onclick="nextThis(this)">&#10095;</button>
+                        <!-- Availability Badge -->
+                            <div class="absolute top-4 left-4 z-20">
+                                <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    متوفر
+                                </span>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        <!-- Product details -->
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-cally-dark">قلادة الخفاش</h3>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">رجال</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">قلادة صلصال بتصميم خفاش، قطعة فنية تبرز طابع الجرأة والتميّز</p>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-2xl font-bold text-cally-red">  7000 د.ع </span>
+                                </div>
+                                
+                                <!-- Product variants -->
+                                <div class="space-y-2">
+                                    <span class="text-sm text-gray-600 font-medium">اختر النموذج:</span>
+                                    <div class="flex space-x-reverse space-x-2">
+                                        <button onclick="selectVariant(this, 'قلادةالخفاش', 'اسود')" class="variant-btn w-8 h-8 bg-black rounded-full border-2 border-gray-300 hover:border-cally-red transition-colors duration-300" title="اسود" data-variant="اسود"></button>
+                                        
+                                        
+                                    </div>
+                                    <span id="selected-variant-قلادةالخفاش" class="text-sm text-cally-red font-medium">يرجى اختيار نموذج</span>
+                                </div>
+                                
+                                <!-- Quantity selector -->
+                                <div class="space-y-2">
+                                    <span class="text-sm text-gray-600 font-medium">الكمية:</span>
+                                    <div class="flex items-center space-x-reverse space-x-3">
+                                        <button onclick="changeQuantity('قلادةالخفاش', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors duration-300">-</button>
+                                        <span id="quantity-قلادة الخفاش" class="w-8 text-center font-medium">1</span>
+                                        <button onclick="changeQuantity('قلادةالخفاش', 1)" class="w-8 h-8 bg-cally-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-300">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- Action buttons -->
+                                <div class="flex items-center justify-between pt-2">
+                                    <button onclick="customDesign('قلادةالخفاش')" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm font-medium">
+                                        تصميم مخصص
+                                    </button>
+                                    <button onclick="addToCartWithOptions('قلادةالخفاش', 7000)" class="bg-gradient-to-r from-cally-red to-red-600 text-white px-4 py-2 rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg">أضف للسلة</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </dive>
+                    <!-- Carousel Styles -->          
+            <style>
+            .carousel-container {
+                  position: relative;
+              width: 100%;
+              aspect-ratio: 1 / 1; /* مربع */
+            overflow: hidden;
+                }
+                .carousel-track {
+              display: flex;
+              height: 100%;
+              transition: transform 0.5s ease-in-out;
+            transform: translateX(0);
+            }
+            .carousel-track img {
+              flex: 0 0 100%; /* كل صورة تاخذ عرض كامل */
+              width: 100%;
+              height: 100%;
+            object-fit: cover;
+            }
+
+            .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+              background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 50%;
+
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        z-index: 10; /* make sure they're on top of images */
+        }
+
+        .prev { left: 10px; }   /* 👈 stick left */
+        .next { right: 10px; }  /* 👈 stick right */
+
+        </style>
+
+                    <script>
+                    function nextThis(btn){
+            const container = btn.closest('.carousel-container');
+             const track = container.querySelector('.carousel-track');
+             const slideWidth = container.clientWidth;
+
+             track.style.transition = "transform .5s ease";
+             track.style.transform = `translateX(-${slideWidth}px)`;
+
+             track.addEventListener("transitionend", function handler(){
+             track.appendChild(track.firstElementChild);
+                track.style.transition = "none";
+                track.style.transform = "translateX(0)";
+                track.removeEventListener("transitionend", handler);
+             });
+                }
+
+            function prevThis(btn){
+            const container = btn.closest('.carousel-container');
+            const track = container.querySelector('.carousel-track');
+            const slideWidth = container.clientWidth;
+
+            track.insertBefore(track.lastElementChild, track.firstElementChild);
+             track.style.transition = "none";
+                track.style.transform = `translateX(-${slideWidth}px)`;
+                requestAnimationFrame(()=>{
+              track.style.transition = "transform .5s ease";
+              track.style.transform = "translateX(0)";
+                 });
+                  }
+               </script>>
+                   </dive> <!-- More products can be added here in the same format -->
                 </div>
             </div>
         </section>
     </div>
 
+
+
+
+
+                            
+
+
+
+                    
     <!-- About Page -->
     <div id="about-page" class="page-content hidden">
         <section class="py-16">
@@ -1069,7 +1313,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     </svg>
-                                    <span class="text-gray-700">الرياض، المملكة العربية السعودية</span>
+                                    <span class="text-gray-700">البصرة, العراق</span>
                                 </div>
                             </div>
                         </div>
@@ -1146,7 +1390,7 @@
             <div id="cart-total" class="border-t pt-4 hidden">
                 <div class="flex justify-between items-center mb-4">
                     <span class="text-lg font-bold">المجموع:</span>
-                    <span id="total-amount" class="text-lg font-bold text-cally-red">٠ ر.س</span>
+                    <span id="total-amount" class="text-lg font-bold text-cally-red">٠ د.س</span>
                 </div>
                 <button onclick="checkout()" class="w-full bg-cally-red text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors duration-300">
                     إتمام الشراء
@@ -1245,7 +1489,78 @@
             </form>
         </div>
     </div>
-
+    <script>
+     // Update dots
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carouselStates[carouselId].currentSlide);
+            });
+        
+        
+        function nextSlide(carouselId) {
+            const state = carouselStates[carouselId];
+            state.currentSlide = (state.currentSlide + 1) % state.totalSlides;
+            updateCarousel(carouselId);
+        }
+        
+        function previousSlide(carouselId) {
+            const state = carouselStates[carouselId];
+            state.currentSlide = (state.currentSlide - 1 + state.totalSlides) % state.totalSlides;
+            updateCarousel(carouselId);
+        }
+        
+        function goToSlide(carouselId, slideIndex) {
+            carouselStates[carouselId].currentSlide = slideIndex;
+            updateCarousel(carouselId);
+        }
+        
+        // Auto-play functionality for all carousels (optional)
+        setInterval(() => {
+            for (let i = 0; i < carouselStates.length; i++) {
+                nextSlide(i);
+            }
+        }, 5000);
+        // Touch/swipe support for mobile
+        document.querySelectorAll('.carousel-track').forEach((track, carouselId) => {
+            let startX = 0;
+            let endX = 0;
+            
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            
+            track.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe(carouselId);
+            });
+            
+            function handleSwipe(id) {
+                const swipeThreshold = 50;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextSlide(id);
+                    } else {
+                        previousSlide(id);
+                    }
+                }
+            }
+        });
+function filterSection(section) {
+  const products = document.querySelectorAll('#products-grid .product-card');
+  products.forEach(prod => {
+    if (section === 'all') {
+      prod.classList.remove('hidden'); // إظهار الكل
+    } else {
+      prod.dataset.section === section 
+        ? prod.classList.remove('hidden') 
+        : prod.classList.add('hidden');
+    }
+  });
+}
+</script>
+<!-- Cart Modal Toggle -->
     <script>
         // Cart functionality
         let cart = [];
@@ -1414,7 +1729,7 @@
                         <div class="flex-1">
                             <h4 class="font-medium text-cally-dark">${item.name}</h4>
                             ${item.variant ? `<p class="text-xs text-gray-500">النموذج: ${item.variant}</p>` : ''}
-                            <p class="text-sm text-gray-600">${item.price} ر.س × ${item.quantity}</p>
+                            <p class="text-sm text-gray-600">${item.price} د.ع × ${item.quantity}</p>
                         </div>
                         <div class="flex items-center space-x-reverse space-x-2">
                             <button onclick="updateCartQuantity('${item.key}', -1)" class="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300">-</button>
@@ -1431,7 +1746,7 @@
                 
                 // Calculate and display total
                 const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                totalAmount.textContent = `${total} ر.س`;
+                totalAmount.textContent = `${total} د.ع`;
                 cartTotal.classList.remove('hidden');
             }
         }
@@ -1520,11 +1835,11 @@
             
             cart.forEach(item => {
                 const variantText = item.variant ? ` (${item.variant})` : '';
-                orderText += `• ${item.name}${variantText} - الكمية: ${item.quantity} - السعر: ${item.price * item.quantity} ر.س\n`;
+                orderText += `• ${item.name}${variantText} - الكمية: ${item.quantity} - السعر: ${item.price * item.quantity} د.ع\n`;
                 total += item.price * item.quantity;
             });
             
-            orderText += `\nالمجموع الكلي: ${total} ر.س\n\nشكراً لكم!`;
+            orderText += `\nالمجموع الكلي: ${total} د.ع\n\nشكراً لكم!`;
             
             // Open WhatsApp with order details
             const whatsappUrl = `https://wa.me/964782493766?text=${encodeURIComponent(orderText)}`;
@@ -1656,90 +1971,139 @@
                 }, 300);
             }
         }
+// Robust filterProducts — drop-in replacement
+(function(){
+  const debug = true; // set false to silence logs
 
-        function filterProducts() {
-            const categoryFilter = document.querySelector('input[name="category"]:checked').value;
-            const priceFilter = document.querySelector('input[name="price"]:checked').value;
-            const typeFilter = document.querySelector('input[name="type"]:checked').value;
-            const genderFilter = document.querySelector('input[name="gender"]:checked').value;
-            const availabilityFilter = document.querySelector('input[name="availability"]:checked').value;
-            
-            // Update visual selection for all filter icons
-            updateFilterIconSelection();
-            
-            const productCards = document.querySelectorAll('.product-card');
-            
-            productCards.forEach(card => {
-                let showCard = true;
-                
-                // Category filter
-                if (categoryFilter && card.dataset.category !== categoryFilter) {
-                    showCard = false;
-                }
-                
-                // Price filter
-                if (priceFilter) {
-                    const price = parseInt(card.dataset.price);
-                    if (priceFilter === 'low' && price > 5000) {
-                        showCard = false;
-                    } else if (priceFilter === 'high' && price <= 5000) {
-                        showCard = false;
-                    }
-                }
-                
-                // Type filter
-                if (typeFilter && card.dataset.type !== typeFilter) {
-                    showCard = false;
-                }
-                
-                // Gender filter
-                if (genderFilter && card.dataset.gender !== genderFilter) {
-                    showCard = false;
-                }
-                
-                // Availability filter
-                if (availabilityFilter && card.dataset.availability !== availabilityFilter) {
-                    showCard = false;
-                }
-                
-                // Show or hide card
-                if (showCard) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeIn 0.5s ease-in';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            // Check if no products match filters
-            const visibleCards = document.querySelectorAll('.product-card[style*="display: block"], .product-card:not([style*="display: none"])');
-            const noResultsMessage = document.getElementById('no-results-message');
-            
-            if (visibleCards.length === 0) {
-                if (!noResultsMessage) {
-                    const message = document.createElement('div');
-                    message.id = 'no-results-message';
-                    message.className = 'col-span-full text-center py-12';
-                    message.innerHTML = `
-                        <div class="text-gray-400 mb-4">
-                            <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.29-1.009-5.824-2.563M15 9.34V7a3 3 0 00-3-3 3 3 0 00-3 3v2.34m1.832 9.844l-8.618-8.618a1 1 0 010-1.414l8.618-8.618a1 1 0 011.414 0l8.618 8.618a1 1 0 010 1.414l-8.618 8.618a1 1 0 01-1.414 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-600 mb-2">لا توجد منتجات</h3>
-                        <p class="text-gray-500">لم نجد منتجات تطابق المرشحات المحددة</p>
-                        <button onclick="clearFilters()" class="mt-4 bg-cally-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300">
-                            مسح جميع المرشحات
-                        </button>
-                    `;
-                    document.getElementById('products-grid').appendChild(message);
-                }
-            } else {
-                if (noResultsMessage) {
-                    noResultsMessage.remove();
-                }
-            }
+  function normalizeStr(s){
+    if(s === null || s === undefined) return "";
+    try {
+      // replace non-breaking spaces, collapse whitespace, trim, normalize unicode
+      return String(s).replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim().normalize('NFKC');
+    } catch(e){
+      return String(s);
+    }
+  }
+
+  function getCardValue(card, attrName){
+    // try dataset first, then attribute
+    let v = card.dataset && card.dataset[attrName] ? card.dataset[attrName] : null;
+    if(!v) v = card.getAttribute && card.getAttribute('data-' + attrName) ? card.getAttribute('data-' + attrName) : '';
+    return normalizeStr(v || '');
+  }
+
+  function parsePrice(raw){
+    if(!raw && raw !== 0) return NaN;
+    // extract digits (handles "٦٥٠٠", "6500", "6,500 د.ع" etc)
+    const digits = String(raw).replace(/[^\d\u0660-\u0669]/g, '');
+    // replace arabic digits to latin
+    const arabicToLatin = digits.replace(/[\u0660-\u0669]/g, d => String(d.charCodeAt(0) - 0x0660));
+    const p = parseInt(arabicToLatin || '', 10);
+    return Number.isNaN(p) ? NaN : p;
+  }
+
+  function filterProducts() {
+    try {
+      const categoryFilter = normalizeStr(document.querySelector('input[name="category"]:checked')?.value || "");
+      const priceFilter = normalizeStr(document.querySelector('input[name="price"]:checked')?.value || "");
+      const typeFilter = normalizeStr(document.querySelector('input[name="type"]:checked')?.value || "");
+      const genderFilter = normalizeStr(document.querySelector('input[name="gender"]:checked')?.value || "");
+      const availabilityFilter = normalizeStr(document.querySelector('input[name="availability"]:checked')?.value || "");
+
+      if (typeof updateFilterIconSelection === "function") updateFilterIconSelection();
+
+      const productCards = document.querySelectorAll('.product-card');
+      if(debug) {
+        console.log("---- filterProducts() running ----");
+        console.log("Active filters:", {categoryFilter, priceFilter, typeFilter, genderFilter, availabilityFilter});
+        console.log("Total .product-card found:", productCards.length);
+      }
+
+      productCards.forEach(card => {
+        const cardCat = getCardValue(card, 'category');
+        const cardType = getCardValue(card, 'type');
+        const cardGender = getCardValue(card, 'gender');
+        const cardAvailability = getCardValue(card, 'availability');
+        const cardPriceRaw = getCardValue(card, 'price');
+        const cardPrice = parsePrice(cardPriceRaw);
+
+        let show = true;
+
+        if (categoryFilter && cardCat !== categoryFilter) show = false;
+
+        if (priceFilter) {
+          if (Number.isNaN(cardPrice)) {
+            // if price missing or unparsable, hide when a price filter is active
+            show = false;
+          } else {
+            if (priceFilter === 'low' && cardPrice >= 5000) show = false;
+            if (priceFilter === 'high' && cardPrice <= 5000) show = false;
+          }
         }
+
+        if (typeFilter && cardType !== typeFilter) show = false;
+        if (genderFilter && cardGender !== genderFilter) show = false;
+        if (availabilityFilter && cardAvailability !== availabilityFilter) show = false;
+
+        // Apply display: keep default CSS when showing, hide with style when not
+        if (show) {
+          card.style.removeProperty('display'); // revert to CSS
+          try { card.style.animation = 'fadeIn 0.5s ease-in'; } catch(e){}
+        } else {
+          card.style.display = 'none';
+        }
+
+        if(debug) {
+          console.log("Card:", card.querySelector ? (card.querySelector('h3')?.innerText || cardCat) : card,
+                      {cardCat, cardType, cardGender, cardAvailability, cardPriceRaw, cardPrice, show});
+        }
+      });
+
+      // no-results handling
+      const visibleCards = Array.from(document.querySelectorAll('.product-card')).filter(c => {
+        // consider visible if computed display is not 'none'
+        return window.getComputedStyle(c).display !== 'none';
+      });
+
+      const noResultsMessage = document.getElementById('no-results-message');
+      if (visibleCards.length === 0) {
+        if (!noResultsMessage && document.getElementById('products-grid')) {
+          const message = document.createElement('div');
+          message.id = 'no-results-message';
+          message.className = 'col-span-full text-center py-12';
+          message.innerHTML = `
+            <h3 class="text-xl font-bold text-gray-600 mb-2">لا توجد منتجات</h3>
+            <p class="text-gray-500">لم نجد منتجات تطابق المرشحات المحددة</p>
+            <button onclick="clearFilters()" class="mt-4 bg-cally-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors duration-300">
+              مسح جميع المرشحات
+            </button>
+          `;
+          document.getElementById('products-grid').appendChild(message);
+        }
+      } else {
+        if (noResultsMessage) noResultsMessage.remove();
+      }
+
+      if(debug) console.log("Visible cards count:", visibleCards.length);
+    } catch (err) {
+      console.error("filterProducts() error:", err);
+    }
+  }
+
+  // expose function globally (replace old)
+  window.filterProducts = filterProducts;
+
+  // ensure initial visual state
+  document.addEventListener('DOMContentLoaded', function(){
+    try {
+      // initialize icon visuals without changing selection
+      if (typeof updateFilterIconSelection === "function") updateFilterIconSelection();
+    } catch(e){}
+  });
+
+})(); // end IIFE
+
+
         
         function updateFilterIconSelection() {
             // Reset all filter icons
@@ -1857,5 +2221,131 @@
             showPage('home');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e70195e4d52e49',t:'MTc1NTA3NTQ1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e70195e4d52e49',t:'MTc1NTA3NTQ1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<!-- زر تفعيل وضع الإدارة -->
+<button id="admin-toggle" 
+        style="position:fixed; bottom:20px; right:20px; z-index:9999;" 
+        class="bg-cally-red text-white p-4 rounded-full shadow-lg hover:bg-red-700 transition">
+    وضع الإدارة
+    
+</button>
+<!-- زر إضافة منتج -->
+<button id="add-product-btn" 
+        class="fixed bottom-20 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50 hidden">
+    +
+</button>
+<!-- فورم إضافة منتج -->
+<!-- فورم إضافة منتج -->
+<div id="add-product-modal" class="hidden fixed inset-0 bg-black/50 overflow-y-auto z-50">
+  <div class="bg-white p-6 rounded-xl w-full max-w-md shadow-lg mx-auto mt-10 mb-10">
+    <h2 class="text-xl font-bold mb-4">إضافة منتج جديد</h2>
+    
+    <input id="product-name" type="text" placeholder="اسم المنتج" class="w-full border p-2 rounded mb-3">
+    <input id="product-price" type="text" placeholder="السعر (يبدأ من 1000)" class="w-full border p-2 rounded mb-3">
+    
+    <!-- الصور -->
+    <input id="product-images" type="text" placeholder="أدخل روابط الصور (افصل بينهم بفاصلة ,)" class="w-full border p-2 rounded mb-3">
+    <small class="text-gray-500">مثال: https://img1.jpg, https://img2.jpg</small>
+    
+    <textarea id="product-desc" placeholder="وصف المنتج" class="w-full border p-2 rounded mb-3"></textarea>
+    
+    <!-- القسم -->
+    <select id="product-section" class="w-full border p-2 rounded mb-3">
+      <option value="new-products"> الجديد</option>
+      <option value="bestseller-products"> الأكثر مبيعاً</option>
+      <option value="offers-products"> العروض</option>
+      <option value="products-grid"> عام</option>
+    </select>
+    
+    <!-- الفئة -->
+    <select id="product-category" class="w-full border p-2 rounded mb-3">
+      <option value="أقراط">أقراط</option>
+      <option value="قلادات">قلادات</option>
+      <option value="أساور">أساور</option>
+      <option value="خواتم">خواتم</option>
+      <option value="إكسسوارات شعر">إكسسوارات شعر</option>
+      <option value="أطقم">أطقم</option>
+    </select>
+    
+    <!-- النوع -->
+    <select id="product-type" class="w-full border p-2 rounded mb-3">
+      <option value="ريزن">ريزن</option>
+      <option value="صلصال">صلصال</option>
+      <option value="أخرى">أخرى</option>
+    </select>
+    
+    <!-- الجنس -->
+    <select id="product-gender" class="w-full border p-2 rounded mb-3">
+      <option value="نساء">نساء</option>
+      <option value="رجال">رجال</option>
+      <option value="للجميع">للجميع</option>
+    </select>
+    
+    <!-- التوفر -->
+    <select id="product-availability" class="w-full border p-2 rounded mb-3">
+      <option value="متوفر">متوفر</option>
+      <option value="نفذ">نفذ</option>
+    </select>
+    
+    <button id="save-product" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">حفظ</button>
+    <button id="cancel-product" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">إلغاء</button>
+  </div>
+</div>
+
+
+
+  
+
+
+
+</body>
+<script>
+let adminMode = false;
+
+// زر وضع الإدارة
+document.getElementById('admin-toggle').addEventListener('click', () => {
+    adminMode = !adminMode;
+    document.getElementById('add-product-btn').classList.toggle('hidden', !adminMode);
+});
+
+// زر إضافة منتج
+document.getElementById('add-product-btn').addEventListener('click', () => {
+    document.getElementById('add-product-modal').classList.remove('hidden');
+});
+
+// زر إلغاء
+document.getElementById('cancel-product').addEventListener('click', () => {
+    document.getElementById('add-product-modal').classList.add('hidden');
+});
+
+// زر حفظ المنتج
+document.getElementById('save-product').addEventListener('click', () => {
+    const name = document.getElementById('product-name').value;
+    const price = document.getElementById('product-price').value;
+    const img = document.getElementById('product-images').value.split(',')[0].trim(); // أخذ أول رابط صورة
+    const desc = document.getElementById('product-desc').value;
+
+    if (!name || !price || !img) {
+        alert("رجاءً املأ الحقول المطلوبة");
+        return;
+    }
+
+    const productHTML = `
+    <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="${img}" alt="${name}" class="w-full h-64 object-cover">
+        <div class="p-6">
+            <h3 class="text-xl font-bold text-cally-dark">${name}</h3>
+            <p class="text-gray-600 mb-4">${desc}</p>
+            <span class="text-2xl font-bold text-cally-red">${price} د.ع</span>
+        </div>
+    </div>
+    `;
+
+    document.getElementById('products-grid').innerHTML += productHTML;
+
+    document.getElementById('add-product-modal').classList.add('hidden');
+    document.getElementById('product-name').value = "";
+    document.getElementById('product-price').value = "";
+    document.getElementById('product-images').value = "";
+    document.getElementById('product-desc').value = "";
+});
