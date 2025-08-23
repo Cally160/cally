@@ -95,11 +95,19 @@
 <body class="bg-white text-cally-dark">
    <style>
     /* For phones (max width 600px) */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   body {
     font-size: 16px;
     padding: 5px;
+    .floating{
+        animation: none !important;
+    }
   }
+  .hover\:scale-125:hover,
+  .hover\:rotate-2:hover,
+    .hover\:-rotate-2:hover {
+        transform: none !important;
+    }
 
   .container {
     flex-direction: column;
@@ -198,7 +206,7 @@
             </div>
             
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
-                <div class="mb-12">
+                <div class="mb-5">
                     <h1 class="text-8xl md:text-9xl lg:text-[12rem] font-black text-white mb-8 fade-in tracking-tight transform hover:scale-105 transition-transform duration-700" style="text-shadow: 4px 4px 8px rgba(0,0,0,0.6), 0 0 30px rgba(255,255,255,0.3);">Cally</h1>
                     <div class="h-2 w-32 bg-white mx-auto rounded-full mb-8 fade-in" style="animation-delay: 0.2s"></div>
                 </div>
@@ -210,7 +218,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-8 justify-center items-center fade-in" style="animation-delay: 0.7s">
-                    <button onclick="showPage('products')" class="group relative bg-white text-black px-12 py-5 rounded-2xl font-black text-xl hover:bg-black hover:text-white transition-all duration-700 transform hover:scale-125 hover:rotate-2 shadow-2xl glow overflow-hidden">
+                    <button onclick="showPage('products')" class="group relative bg-white text-black px-9 py-4 rounded-2xl font-black text-xl hover:bg-black hover:text-white transition-all duration-700 transform hover:scale-125 hover:rotate-2 shadow-2xl glow overflow-hidden">
                         <span class="relative z-10 flex items-center">
                             <svg class="w-8 h-8 ml-4 transform group-hover:rotate-45 group-hover:scale-125 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
@@ -224,7 +232,7 @@
                         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-y-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
                     </button>
                     
-                    <button onclick="showPage('about')" class="group px-12 py-5 border-4 border-white text-white font-black text-xl rounded-2xl hover:bg-white hover:text-black transition-all duration-700 transform hover:scale-125 hover:-rotate-2 shadow-2xl glass-effect">
+                    <button onclick="showPage('about')" class="group px-9 py-4 border-4 border-white text-white font-black text-xl rounded-2xl hover:bg-white hover:text-black transition-all duration-700 transform hover:scale-125 hover:-rotate-2 shadow-2xl glass-effect">
                         <span class="flex items-center">
                             <span class="ml-4">تعرف علينا</span>
                             <svg class="w-8 h-8 transform group-hover:rotate-45 group-hover:scale-125 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -247,7 +255,7 @@
             
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center mb-20">
-                    <h2 class="text-5xl md:text-6xl lg:text-7xl font-black text-black mb-8 fade-in" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.1);">لماذا تختار Cally؟</h2>
+                    <h2 class="text-5xl md:text-6xl lg:text-7xl font-black text-black sticky mb-8 fade-in" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.1);">لماذا تختار Cally؟</h2>
                     <div class="h-2 w-40 bg-gradient-to-r from-cally-red to-red-600 mx-auto rounded-full fade-in" style="animation-delay: 0.2s"></div>
                 </div>
                 
@@ -293,10 +301,10 @@
                 <h1 class="text-4xl font-bold text-center mb-8 text-cally-dark">منتجاتنا</h1>
                 
                 <!-- Filter Button -->
-                <div class="flex items-center space-x-reverse space-x-8">
-                    <button onclick="toggleFilters()" class="bg-white rounded-full shadow-lg p-4 hover:shadow-xl transition-all duration-300 transform hover:scale-110 group">
+                <div class="flex items-center space-x-reverse space-x-8 justify-center mb-6" mt-4>
+                    <button onclick="toggleFilters()" class="bg-white rounded-full shadow-lg px-4 py-2 text-sm hover:shadow-xl transition-all duration-300 transform hover:scale-110 group">
                         <div class="flex items-center space-x-reverse space-x-2">
-                            <svg class="w-5 h-5 text-cally-red group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-6 h-6 text-cally-red group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
                             </svg>
                             <span class="text-cally-dark font-medium">تصفية المنتجات</span>
@@ -331,6 +339,29 @@
           class="tab-btn bg-gray-200 px-4 py-2 rounded-lg hover:bg-cally-red hover:text-white">
     كالي بوكس 
          </button>
+         <style>
+            #section-tabs {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 8px;
+  gap: 8px;
+}
+
+#section-tabs::-webkit-scrollbar {
+  height: 6px; /* شريط تمرير أصغر */
+}
+#section-tabs::-webkit-scrollbar-thumb {
+  background: #e11d48;
+  border-radius: 9999px;
+}
+#section-tabs .tab-btn {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+</style>
+
+
         </div>
 
 
@@ -338,15 +369,45 @@
 
 
                 <!-- Filters Panel (Hidden by default) -->
-                <div id="filters-panel" class="bg-white rounded-2xl shadow-lg p-6 mb-8 hidden transform transition-all duration-300 scale-95 opacity-0" m-t-5>
-                    <div class="flex justify-between items-center mb-6">
+                <div id="filters-panel" class="bg-white rounded-2xl shadow-lg py-2 md:p-4 mb-4 hidden transform transition-all duration-300 scale-95 opacity-0">
+                    <div class="flex justify-between items-center mb-4" >
                         <h2 class="text-xl font-bold text-cally-dark">تصفية المنتجات</h2>
-                        <button onclick="toggleFilters()" class="text-gray-500 hover:text-gray-700">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <button onclick="toggleFilters()" class="bg-white rounded-full shadow-lg p-2 text-sm md:p-2 md:text-base hover:shadow-xl transition-all duration-300 transform hover:scale-110 group">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 25 25">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
                         </button>
                     </div>
+                   <style>
+                    /* Custom scrollbar for filters panel */
+                    /* Smaller filter option buttons inside the filter panel */
+
+
+#filters-panel .grid > .text-center label > div span {
+  font-size: 12px !important;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#filters-panel .grid {
+  gap: 2px !important;
+}
+#filters-panel .grid > .text-center label > div {
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 8px 14px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px !important;
+  white-space: nowrap;
+
+
+}
+
+</style>
                     
                     <!-- Filter Sections with Icons -->
                     <div class="space-y-8">
@@ -358,13 +419,13 @@
                                 </svg>
                                 الفئة
                             </h3>
-                            <div class="grid grid-cols-4 md:grid-cols-8 gap-3">
+                            <div class="grid grid-cols-4 gap-2">
                                 <!-- All Categories -->
                                 <div class="text-center">
                                     <input type="radio" name="category" value="" id="cat-all" onchange="filterProducts()" class="hidden" checked>
                                     <label for="cat-all" class="category-icon cursor-pointer block">
-                                        <div class="w-16 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">الكل</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">الكل</span>
                                         </div>
                                     </label>
                                 </div>
@@ -373,8 +434,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="category" value="أقراط" id="cat-earrings" onchange="filterProducts()" class="hidden">
                                     <label for="cat-earrings" class="category-icon cursor-pointer block">
-                                        <div class="w-16 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">أقراط</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">أقراط</span>
                                         </div>
                                     </label>
                                 </div>
@@ -383,8 +444,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="category" value="قلادات" id="cat-necklaces" onchange="filterProducts()" class="hidden">
                                     <label for="cat-necklaces" class="category-icon cursor-pointer block">
-                                        <div class="w-16 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">قلادات</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">قلادات</span>
                                         </div>
                                     </label>
                                 </div>
@@ -393,8 +454,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="category" value="أساور" id="cat-bracelets" onchange="filterProducts()" class="hidden">
                                     <label for="cat-bracelets" class="category-icon cursor-pointer block">
-                                        <div class="w-16 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">أساور</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">أساور</span>
                                         </div>
                                     </label>
                                 </div>
@@ -403,8 +464,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="category" value="خواتم" id="cat-rings" onchange="filterProducts()" class="hidden">
                                     <label for="cat-rings" class="category-icon cursor-pointer block">
-                                        <div class="w-16 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">خواتم</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">خواتم</span>
                                         </div>
                                     </label>
                                 </div>
@@ -413,8 +474,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="category" value="إكسسوارات شعر" id="cat-hair" onchange="filterProducts()" class="hidden">
                                     <label for="cat-hair" class="category-icon cursor-pointer block">
-                                        <div class="w-16 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">شعر</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">شعر</span>
                                         </div>
                                     </label>
                                 </div>
@@ -423,8 +484,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="category" value="أطقم" id="cat-sets" onchange="filterProducts()" class="hidden">
                                     <label for="cat-sets" class="category-icon cursor-pointer block">
-                                        <div class="w-16 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">أطقم</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">أطقم</span>
                                         </div>
                                     </label>
                                 </div>
@@ -441,13 +502,13 @@
                                 </svg>
                                 السعر
                             </h3>
-                            <div class="grid grid-cols-3 gap-3">
+                            <div class="grid grid-cols-4 gap-2">
                                 <!-- All Prices -->
                                 <div class="text-center">
                                     <input type="radio" name="price" value="" id="price-all" onchange="filterProducts()" class="hidden" checked>
                                     <label for="price-all" class="price-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">جميع الأسعار</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">جميع الأسعار</span>
                                         </div>
                                     </label>
                                 </div>
@@ -456,8 +517,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="price" value="low" id="price-low" onchange="filterProducts()" class="hidden">
                                     <label for="price-low" class="price-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">أقل من 5000</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600" px-4 py-2>
+                                            <span class="font-size font-bold text-white">أقل من 5000</span>
                                         </div>
                                     </label>
                                 </div>
@@ -466,8 +527,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="price" value="high" id="price-high" onchange="filterProducts()" class="hidden">
                                     <label for="price-high" class="price-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">أكثر من 5000</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">أكثر من 5000</span>
                                         </div>
                                     </label>
                                 </div>
@@ -484,13 +545,13 @@
                                 </svg>
                                 النوع
                             </h3>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div class="grid grid-cols-4 gap-2">
                                 <!-- All Types -->
                                 <div class="text-center">
                                     <input type="radio" name="type" value="" id="type-all" onchange="filterProducts()" class="hidden" checked>
                                     <label for="type-all" class="type-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">جميع الأنواع</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">جميع الأنواع</span>
                                         </div>
                                     </label>
                                 </div>
@@ -499,7 +560,7 @@
                                 <div class="text-center">
                                     <input type="radio" name="type" value="ريزن" id="type-resin" onchange="filterProducts()" class="hidden">
                                     <label for="type-resin" class="type-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
                                             <span class="text-xs font-bold text-white">ريزن</span>
                                         </div>
                                     </label>
@@ -509,8 +570,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="type" value="صلصال" id="type-clay" onchange="filterProducts()" class="hidden">
                                     <label for="type-clay" class="type-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">صلصال</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">صلصال</span>
                                         </div>
                                     </label>
                                 </div>
@@ -519,8 +580,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="type" value="أخرى" id="type-others" onchange="filterProducts()" class="hidden">
                                     <label for="type-others" class="type-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">أخرى</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">أخرى</span>
                                         </div>
                                     </label>
                                 </div>
@@ -535,13 +596,13 @@
                                 </svg>
                                 الجنس
                             </h3>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <div  class="grid grid-cols-4 gap-2">
                                 <!-- All Genders -->
                                 <div class="text-center">
                                     <input type="radio" name="gender" value="" id="gender-all" onchange="filterProducts()" class="hidden" checked>
                                     <label for="gender-all" class="gender-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">للجميع</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">للجميع</span>
                                         </div>
                                     </label>
                                 </div>
@@ -550,8 +611,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="gender" value="نساء" id="gender-women" onchange="filterProducts()" class="hidden">
                                     <label for="gender-women" class="gender-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">نساء</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">نساء</span>
                                         </div>
                                     </label>
                                 </div>
@@ -560,8 +621,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="gender" value="رجال" id="gender-men" onchange="filterProducts()" class="hidden">
                                     <label for="gender-men" class="gender-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">رجال</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">رجال</span>
                                         </div>
                                     </label>
                                 </div>
@@ -570,8 +631,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="gender" value="للجميع" id="gender-unisex" onchange="filterProducts()" class="hidden">
                                     <label for="gender-unisex" class="gender-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">مشترك</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">مشترك</span>
                                         </div>
                                     </label>
                                 </div>
@@ -586,13 +647,13 @@
                                 </svg>
                                 التوفر
                             </h3>
-                            <div class="grid grid-cols-3 gap-3">
+                            <div class="grid grid-cols-4 gap-2">
                                 <!-- All Products -->
                                 <div class="text-center">
                                     <input type="radio" name="availability" value="" id="avail-all" onchange="filterProducts()" class="hidden" checked>
                                     <label for="avail-all" class="availability-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">جميع المنتجات</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">جميع المنتجات</span>
                                         </div>
                                     </label>
                                 </div>
@@ -601,8 +662,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="availability" value="متوفر" id="avail-available" onchange="filterProducts()" class="hidden">
                                     <label for="avail-available" class="availability-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">متوفر</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">متوفر</span>
                                         </div>
                                     </label>
                                 </div>
@@ -611,8 +672,8 @@
                                 <div class="text-center">
                                     <input type="radio" name="availability" value="نفذ" id="avail-out" onchange="filterProducts()" class="hidden">
                                     <label for="avail-out" class="availability-icon cursor-pointer block">
-                                        <div class="w-20 h-12 bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
-                                            <span class="text-xs font-bold text-white">نفذ</span>
+                                        <div class="bg-gradient-to-br from-cally-red via-red-600 to-red-800 rounded-xl flex items-center justify-center hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-red-600">
+                                            <span class="font-size font-bold text-white">نفذ</span>
                                         </div>
                                     </label>
                                 </div>
@@ -3018,6 +3079,7 @@ function filterSection(section) {
     <button id="cancel-product" class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">إلغاء</button>
   </div>
 </div>
+
 
 
 
