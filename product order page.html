@@ -18,11 +18,63 @@
         }
     </script>
     <style>
+        input, textarea { color: black !important; }
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
     </style>
+    <style>
+
+    button {
+ --glow-color: rgb(217, 176, 255);
+ --glow-spread-color: rgba(191, 123, 255, 0.781);
+ --enhanced-glow-color: rgb(231, 206, 255);
+ --btn-color: rgb(100, 61, 136);
+ border: .25em solid var(--glow-color);
+ padding: 1em 3em;
+ color: var(--glow-color);
+ font-size: 15px;
+ font-weight: bold;
+ background-color: var(--btn-color);
+ border-radius: 1em;
+ outline: none;
+ box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 1em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+ text-shadow: 0 0 .5em var(--glow-color);
+ position: relative;
+ transition: all 0.3s;
+}
+
+button::after {
+ pointer-events: none;
+ content: "";
+ position: absolute;
+ top: 120%;
+ left: 0;
+ height: 100%;
+ width: 100%;
+ background-color: var(--glow-spread-color);
+ filter: blur(2em);
+ opacity: .7;
+ transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+}
+
+button:hover {
+ color: var(--btn-color);
+ background-color: var(--glow-color);
+ box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+button:active {
+ box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+    </style>
 </head>
-<body class="bg-white text-black min-h-screen">
+<body class="bg-black text-white min-h-screen">
     <!-- Header -->
     <header class="bg-black text-white py-4 px-6">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
@@ -36,7 +88,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-6 py-12">
+    <main class="max-w-6xl mx-auto px-6 py-12 bg-black">
         <div class="max-w-2xl mx-auto">
             <!-- Order Form Section -->
             <div class="space-y-8">
@@ -44,9 +96,11 @@
                     <h2 class="text-3xl font-bold mb-2">قلادة القمر</h2>
                     <p class="text-gray-600 mb-4">قلادة مصنوعة يدويا بعناية فائقة . مخصص حسب شكل القمر بتاريخ ميلادك لإضافة لمسة شخصية مميزة.</p>
                     <div class="flex items-baseline space-x-reverse space-x-2">
-                        <span class="text-3xl font-bold text-red-600">12 الف</span>
-                        <span class="text-lg text-gray-500 line-through">15 الف</span>
-                        <span class="bg-red-600 text-white px-2 py-1 text-sm rounded">خصم 20%</span>
+                        <pr class="text-3xl font-bold text-purple-600"> 12 الف, التوصيل مجاني</pr>
+                        <br>
+                        <pr class="text-xl  text-gray-600">قطعتان 19 الف , التوصيل مجاني</pr>
+                       
+                        
                     </div>
                 </div>
 
@@ -77,9 +131,9 @@
                     <div>
                         <label class="block text-sm font-medium mb-2">الكمية</label>
                         <div class="flex items-center space-x-reverse space-x-4">
-                            <button type="button" onclick="updateQuantity(-1)" class="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-lg flex items-center justify-center font-semibold transition-colors">-</button>
+                            <button type="button" onclick="updateQuantity(-1)" class="w-10 h-10 rounded-lg flex items-center justify-center font-semibold transition-colors">-</button>
                             <span id="quantity" class="text-xl font-semibold min-w-[2rem] text-center">1</span>
-                            <button type="button" onclick="updateQuantity(1)" class="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-lg flex items-center justify-center font-semibold transition-colors">+</button>
+                            <button type="button" onclick="updateQuantity(1)" class="w-10 h-10 rounded-lg flex items-center justify-center font-semibold transition-colors">+</button>
                         </div>
                     </div>
 
@@ -90,8 +144,8 @@
 
                     <!-- Order Summary -->
                     <div class="bg-gray-50 p-6 rounded-lg">
-                        <h3 class="text-lg font-semibold mb-4">ملخص الطلب</h3>
-                        <div class="space-y-2">
+                        <h3 class="text-lg font-semibold mb-4 text-black">ملخص الطلب</h3>
+                        <div class="space-y-2 text-black">
                             <div class="flex justify-between">
                                 <span>المجموع الفرعي:</span>
                                 <span id="subtotal">12 الف</span>
@@ -103,7 +157,7 @@
                             <div class="border-t pt-2 mt-2">
                                 <div class="flex justify-between font-bold text-lg">
                                     <span>المجموع الكلي:</span>
-                                    <span id="total" class="text-red-600">12 الف</span>
+                                    <span id="total" class="text-purple-600">12 الف</span>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +166,7 @@
                     <!-- Demo Notice -->
                   
 
-                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 transform hover:scale-[1.02]">
+                    <button type="submit" class="w-full bg-black  text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 transform hover:scale-[1.02]">
                         اطلب الآن
                     </button>
                 </form>
@@ -133,18 +187,24 @@
     </footer>
 
     <script>
-        let currentQuantity = 1;
-        const basePrice = 12000; // Base price in currency units
+       let currentQuantity = 1;
+const basePrice = 12000; // سعر القطعة الواحدة
+const additionalPrice = 7000; // السعر الإضافي لكل قطعة
 
-        function updateQuantity(change) {
-            currentQuantity = Math.max(1, currentQuantity + change);
-            document.getElementById('quantity').textContent = currentQuantity;
-            
-            const subtotal = basePrice * currentQuantity;
-          document.getElementById('subtotal').textContent = `${(subtotal/1000).toFixed(0)} الف`;
-          document.getElementById('total').textContent = `${(subtotal/1000).toFixed(0)} الف`; // Free shipping        
-        }
-
+function updateQuantity(change) {
+    currentQuantity = Math.max(1, currentQuantity + change);
+    document.getElementById('quantity').textContent = currentQuantity;
+    
+    // حساب السعر بناءً على الكمية
+    let totalPrice = basePrice;
+    if (currentQuantity > 1) {
+        totalPrice += (currentQuantity - 1) * additionalPrice;
+    }
+    
+    // تحديث العرض
+    document.getElementById('subtotal').textContent = `${(totalPrice/1000).toFixed(0)} الف`;
+    document.getElementById('total').textContent = `${(totalPrice/1000).toFixed(0)} الف`;
+}
         function handleOrder(event) {
             event.preventDefault();
             
@@ -159,17 +219,17 @@
             const total = document.getElementById('total').textContent;
             
             // Create WhatsApp message
-            let message = `🌟طلب جديد - قلادة القمر 🌟\n\n`;
-            message += `👤 الاسم: ${firstName} ${lastName}\n`;
+            let message = `طلب جديد - قلادة القمر \n\n`;
+            message += ` الاسم: ${firstName} ${lastName}\n`;
           
-            message += `📱 رقم الهاتف: ${phone}\n`;
+            message += ` رقم الهاتف: ${phone}\n`;
             if (birthday) {
-                message += `🎂 تاريخ الميلاد للتخصيص: ${birthday}\n`;
+                message += ` تاريخ الميلاد للتخصيص: ${birthday}\n`;
             }
-            message += `📦 الكمية: ${currentQuantity}\n`;
-            message += `💰 المجموع الكلي: ${total}\n`;
-            message += `📍 عنوان الشحن: ${address}\n\n`;
-            message += `شكراً لك على اختيار منتجاتنا المميزة! 💎`;
+            message += ` الكمية: ${currentQuantity}\n`;
+            message += ` المجموع الكلي: ${total}\n`;
+            message += ` عنوان الشحن: ${address}\n\n`;
+            message += `شكراً لك على اختيار منتجاتنا ! `;
             
             // Replace with your WhatsApp number (include country code without + sign)
             const whatsappNumber = "+9647829493766"; // Replace with your actual WhatsApp number
