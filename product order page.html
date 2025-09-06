@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب المنتج المميز</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-red': '#DC2626',
+                        'custom-red-dark': '#B91C1C'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-black min-h-screen">
+    <!-- Header -->
+    <header class="bg-black text-white py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">متجر كالي</h1>
+            <nav class="hidden md:flex space-x-reverse space-x-8">
+                <a href="#" class="hover:text-red-500 transition-colors">المنتجات</a>
+                <a href="#" class="hover:text-red-500 transition-colors">عنا</a>
+                <a href="#" class="hover:text-red-500 transition-colors">اتصل بنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <div class="max-w-2xl mx-auto">
+            <!-- Order Form Section -->
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">قلادة القمر</h2>
+                    <p class="text-gray-600 mb-4">قلادة مصنوعة يدويا بعناية فائقة . مخصص حسب شكل القمر بتاريخ ميلادك لإضافة لمسة شخصية مميزة.</p>
+                    <div class="flex items-baseline space-x-reverse space-x-2">
+                        <span class="text-3xl font-bold text-red-600">12 الف</span>
+                        <span class="text-lg text-gray-500 line-through">15 الف</span>
+                        <span class="bg-red-600 text-white px-2 py-1 text-sm rounded">خصم 20%</span>
+                    </div>
+                </div>
+
+                <!-- Order Form -->
+                <form class="space-y-6" onsubmit="handleOrder(event)">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">الاسم الأول *</label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">اسم العائلة *</label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors">
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">رقم الهاتف *</label>
+                        <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">تاريخ الميلاد للتخصيص (اختياري)</label>
+                        <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">الكمية</label>
+                        <div class="flex items-center space-x-reverse space-x-4">
+                            <button type="button" onclick="updateQuantity(-1)" class="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-lg flex items-center justify-center font-semibold transition-colors">-</button>
+                            <span id="quantity" class="text-xl font-semibold min-w-[2rem] text-center">1</span>
+                            <button type="button" onclick="updateQuantity(1)" class="w-10 h-10 bg-gray-200 hover:bg-gray-300 rounded-lg flex items-center justify-center font-semibold transition-colors">+</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">عنوان الشحن *</label>
+                        <textarea required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none transition-colors resize-none" placeholder="أدخل عنوان الشحن الكامل"></textarea>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4">ملخص الطلب</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span>المجموع الفرعي:</span>
+                                <span id="subtotal">12 الف</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>الشحن:</span>
+                                <span class="text-green-600 font-medium">مجاني</span>
+                            </div>
+                            <div class="border-t pt-2 mt-2">
+                                <div class="flex justify-between font-bold text-lg">
+                                    <span>المجموع الكلي:</span>
+                                    <span id="total" class="text-red-600">12 الف</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Demo Notice -->
+                  
+
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 transform hover:scale-[1.02]">
+                        اطلب الآن
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8 px-6 mt-16">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400">&copy; 2024 متجر كالي. جميع الحقوق محفوظة.</p>
+            <div class="flex justify-center space-x-reverse space-x-6 mt-4">
+                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors">سياسة الخصوصية</a>
+                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors">شروط الخدمة</a>
+                <a href="#" class="text-gray-400 hover:text-red-500 transition-colors">الدعم</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentQuantity = 1;
+        const basePrice = 12000; // Base price in currency units
+
+        function updateQuantity(change) {
+            currentQuantity = Math.max(1, currentQuantity + change);
+            document.getElementById('quantity').textContent = currentQuantity;
+            
+            const subtotal = basePrice * currentQuantity;
+          document.getElementById('subtotal').textContent = `${(subtotal/1000).toFixed(0)} الف`;
+          document.getElementById('total').textContent = `${(subtotal/1000).toFixed(0)} الف`; // Free shipping        
+        }
+
+        function handleOrder(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const firstName = event.target.querySelector('input[type="text"]').value;
+            const lastName = event.target.querySelectorAll('input[type="text"]')[1].value;
+          
+            const phone = event.target.querySelector('input[type="tel"]').value;
+            const birthday = event.target.querySelector('input[type="tel"]').value;
+            const address = event.target.querySelector('textarea').value;
+            const total = document.getElementById('total').textContent;
+            
+            // Create WhatsApp message
+            let message = `🌟طلب جديد - قلادة القمر 🌟\n\n`;
+            message += `👤 الاسم: ${firstName} ${lastName}\n`;
+          
+            message += `📱 رقم الهاتف: ${phone}\n`;
+            if (birthday) {
+                message += `🎂 تاريخ الميلاد للتخصيص: ${birthday}\n`;
+            }
+            message += `📦 الكمية: ${currentQuantity}\n`;
+            message += `💰 المجموع الكلي: ${total}\n`;
+            message += `📍 عنوان الشحن: ${address}\n\n`;
+            message += `شكراً لك على اختيار منتجاتنا المميزة! 💎`;
+            
+            // Replace with your WhatsApp number (include country code without + sign)
+            const whatsappNumber = "+9647829493766"; // Replace with your actual WhatsApp number
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = 'تم إرسال الطلب عبر واتساب!';
+            button.classList.remove('bg-red-600', 'hover:bg-red-700');
+            button.classList.add('bg-green-600');
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('bg-green-600');
+                button.classList.add('bg-red-600', 'hover:bg-red-700');
+                button.disabled = false;
+            }, 3000);
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97adf02d12e1a626',t:'MTc1NzE2MTQxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
